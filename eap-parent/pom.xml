@@ -1,0 +1,17 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>fr.simplex-software.red-hat</groupId>
+    <artifactId>samples-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>fr.simplex-software.red-hat.eap</groupId>
+  <artifactId>eap-parent</artifactId>
+  <packaging>pom</packaging>
+  <name>Red Hat samples :: The EAP master POM module</name>
+  <modules>
+    <module>bpm-parent</module>
+    <module>decision-manager-parent</module>
+    <module>java-ee-parent</module>
+  </modules>
+</project>

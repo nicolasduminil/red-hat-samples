@@ -1,0 +1,12 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>fr.simplex-software.red-hat.wildfly</groupId>
+    <artifactId>wildfly-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>fr.simplex-software.red-hat.wildfly.swarm</groupId>
+  <artifactId>swarm-parent</artifactId>
+  <packaging>pom</packaging>
+  <name>Red Hat samples :: The Wildfly Swarm master POM module</name>
+</project>
