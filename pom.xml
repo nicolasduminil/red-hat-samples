@@ -5,6 +5,10 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Red Hat samples :: The master POM module</name>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+  </properties>
   <modules>
     <module>wildfly-parent</module>
     <module>fuse-parent</module>

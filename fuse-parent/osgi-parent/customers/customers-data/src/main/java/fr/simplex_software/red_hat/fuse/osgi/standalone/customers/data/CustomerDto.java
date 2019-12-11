@@ -1,4 +1,4 @@
-package fr.simplex_software.fuse_integration.karaf.standalone.customers.data;
+package fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data;
 
 import javax.xml.bind.annotation.*;
 import java.io.*;
@@ -29,11 +29,6 @@ public class CustomerDto implements Serializable
     this.state = state;
     this.zip = zip;
     this.country = country;
-  }
-
-  public CustomerDto(Customer customer)
-  {
-    this(customer.getFirstName(), customer.getLastName(), customer.getAddresses().get(0).getStreet(), customer.getAddresses().get(0).getCity(), customer.getAddresses().get(0).getState(), customer.getAddresses().get(0).getZip(), customer.getAddresses().get(0).getCountry());
   }
 
   @XmlElement

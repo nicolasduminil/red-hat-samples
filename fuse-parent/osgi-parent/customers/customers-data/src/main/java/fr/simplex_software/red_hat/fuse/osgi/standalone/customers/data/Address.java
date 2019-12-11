@@ -1,4 +1,4 @@
-package fr.simplex_software.fuse_integration.karaf.standalone.customers.data;
+package fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.*;
