@@ -10,6 +10,7 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>customers-data</artifactId>
   <packaging>bundle</packaging>
+  <name>Red Hat samples :: The Fuse Customers Data module</name>
   <dependencies>
     <dependency>
       <groupId>org.eclipse.persistence</groupId>
