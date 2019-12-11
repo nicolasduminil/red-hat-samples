@@ -9,5 +9,7 @@
     <module>wildfly-parent</module>
     <module>fuse-parent</module>
     <module>eap-parent</module>
+    <module>open-liberty-parent</module>
+    <module>camel-k-parent</module>
   </modules>
 </project>
