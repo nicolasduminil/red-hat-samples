@@ -1,4 +1,4 @@
-package fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data;
+package fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.dtos;
 
 import javax.xml.bind.annotation.*;
 import java.io.*;

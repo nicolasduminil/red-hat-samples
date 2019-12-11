@@ -3,14 +3,19 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <groupId>fr.simplex-software.red-hat.fuse.osgi</groupId>
     <artifactId>customers</artifactId>
+    <groupId>fr.simplex-software.red-hat.fuse.osgi</groupId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
-  <artifactId>customers-data</artifactId>
+  <artifactId>customers-service</artifactId>
   <packaging>bundle</packaging>
   <dependencies>
+    <dependency>
+      <groupId>fr.simplex-software.red-hat.fuse.osgi</groupId>
+      <artifactId>customers-data</artifactId>
+      <version>${project.version}</version>
+    </dependency>
     <dependency>
       <groupId>org.eclipse.persistence</groupId>
       <artifactId>javax.persistence</artifactId>
@@ -35,14 +40,9 @@
         <extensions>true</extensions>
         <configuration>
           <instructions>
-            <Export-Package>fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data</Export-Package>
+            <Meta-Persistence>META-INF/persistence.xml</Meta-Persistence>
             <Import-Package>
               javax.persistence;version="[2,3)",
-              org.hibernate.proxy,
-              javassist.util.proxy,
-              javax.xml.bind;version="[2.2,3)",
-              javax.xml.bind.annotation;version="[2.2,3)",
-              javax.xml.bind.annotation.adapters;version="[2.2,3)",
               *
             </Import-Package>
           </instructions>

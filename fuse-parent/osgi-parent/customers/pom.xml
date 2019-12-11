@@ -12,5 +12,6 @@
   <packaging>pom</packaging>
   <modules>
     <module>customers-data</module>
+    <module>customers-service</module>
   </modules>
 </project>
