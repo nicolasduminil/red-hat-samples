@@ -1,7 +1,6 @@
 package fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.entities;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.*;
 import java.math.*;
 
 @Embeddable
