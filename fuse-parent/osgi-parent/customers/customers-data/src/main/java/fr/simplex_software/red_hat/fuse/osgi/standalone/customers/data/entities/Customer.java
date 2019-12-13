@@ -12,12 +12,13 @@ public class Customer
   private BigInteger customerId;
   private String customerInternalName;
   private List<Address> addresses;
+  private List<Contact> contacts;
 
   public Customer()
   {
   }
 
-  public Customer(String customerInternalName, List<Address> addresses)
+  public Customer(String customerInternalName, List<Address> addresses, List<Contact> contacts)
   {
     this.customerInternalName = customerInternalName;
     this.addresses = addresses;
@@ -58,5 +59,16 @@ public class Customer
   public void setAddresses(List<Address> addresses)
   {
     this.addresses = addresses;
+  }
+
+  @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+  public List<Contact> getContacts()
+  {
+    return contacts;
+  }
+
+  public void setContacts(List<Contact> contacts)
+  {
+    this.contacts = contacts;
   }
 }

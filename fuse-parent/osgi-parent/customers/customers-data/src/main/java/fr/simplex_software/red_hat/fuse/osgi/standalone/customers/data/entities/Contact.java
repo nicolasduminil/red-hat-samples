@@ -13,8 +13,7 @@ public class Contact
   private String lastName;
   private List<String> phoneNumbers;
   private String emailAddress;
-  private CoorporateCustomer coorporateCustomer;
-  private IndividualCustomer individualCustomer;
+  private Customer customer;
 
   public Contact()
   {
@@ -27,8 +26,7 @@ public class Contact
     this.lastName = lastName;
     this.phoneNumbers = phoneNumbers;
     this.emailAddress = emailAddress;
-    this.individualCustomer = individualCustomer;
-    this.coorporateCustomer = coorporateCustomer;
+    this.customer = customer;
   }
 
   @Id
@@ -90,24 +88,13 @@ public class Contact
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "CUSTOMER_ID")
-  public CoorporateCustomer getCoorporateCustomer()
+  public Customer getCustomer()
   {
-    return coorporateCustomer;
+    return customer;
   }
 
-  public void setCoorporateCustomer(CoorporateCustomer coorporateCustomer)
+  public void setCustomer(Customer customer)
   {
-    this.coorporateCustomer = coorporateCustomer;
-  }
-
-  @OneToOne(mappedBy = "contact")
-  public IndividualCustomer getIndividualCustomer()
-  {
-    return individualCustomer;
-  }
-
-  public void setIndividualCustomer(IndividualCustomer individualCustomer)
-  {
-    this.individualCustomer = individualCustomer;
+    this.customer = customer;
   }
 }

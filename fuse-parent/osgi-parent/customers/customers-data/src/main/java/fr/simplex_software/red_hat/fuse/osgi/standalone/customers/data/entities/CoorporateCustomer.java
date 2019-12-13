@@ -8,17 +8,15 @@ import java.util.*;
 public class CoorporateCustomer extends Customer
 {
   private String companyName;
-  private List<Contact> contacts;
 
   public CoorporateCustomer()
   {
   }
 
-  public CoorporateCustomer(String customerInternalName, List<Address> addresses, String companyName, List<Contact> contacts)
+  public CoorporateCustomer(String customerInternalName, List<Address> addresses, String companyName)
   {
-    super(customerInternalName, addresses);
+    super(customerInternalName, addresses, new ArrayList<Contact>());
     this.companyName = companyName;
-    this.contacts = contacts;
   }
 
   @Column(name = "COMPANY_NAME", nullable = false, length = 40)
@@ -30,16 +28,5 @@ public class CoorporateCustomer extends Customer
   public void setCompanyName(String companyName)
   {
     this.companyName = companyName;
-  }
-
-  @OneToMany(mappedBy = "coorporateCustomer", cascade = CascadeType.ALL, orphanRemoval = true)
-  public List<Contact> getContacts()
-  {
-    return contacts;
-  }
-
-  public void setContacts(List<Contact> contacts)
-  {
-    this.contacts = contacts;
   }
 }

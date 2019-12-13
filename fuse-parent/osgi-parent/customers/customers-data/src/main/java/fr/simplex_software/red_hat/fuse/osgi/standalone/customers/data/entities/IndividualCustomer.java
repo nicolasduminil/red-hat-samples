@@ -7,28 +7,12 @@ import java.util.*;
 @Table (name = "INDIVIDUAL_CUSTOMER")
 public class IndividualCustomer extends Customer
 {
-  private Contact contact;
-
-  public IndividualCustomer(Contact contact)
+  public IndividualCustomer()
   {
-    this.contact = contact;
   }
 
-  public IndividualCustomer(String customerInternalName, List<Address> addresses, Contact contact)
+  public IndividualCustomer(String customerInternalName)
   {
-    super(customerInternalName, addresses);
-    this.contact = contact;
-  }
-
-  @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "CONTACT_ID", referencedColumnName = "CUSTOMER_ID")
-  public Contact getContact()
-  {
-    return contact;
-  }
-
-  public void setContact(Contact contact)
-  {
-    this.contact = contact;
+    super(customerInternalName, new ArrayList<Address>(), new ArrayList<Contact>());
   }
 }
