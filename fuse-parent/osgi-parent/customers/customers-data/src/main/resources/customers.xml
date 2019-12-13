@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<customers>
+  <customer internalName="SRB">
+    <addresses>
+      <address street="Treunrenberg" city="Brussels" country="Belgium" zip="1000"/>
+    </addresses>
+  </customer>
+</customers>
