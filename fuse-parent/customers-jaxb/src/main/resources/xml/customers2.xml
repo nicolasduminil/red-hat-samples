@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<customers internalName="String">
+    <coorporateCustomers>
+        <coorporateCustomer companyName="Gosselin S.A.">
+            <addresses>
+                <address street="49 rue de Penthièvre" city="Quimper" country="France" zip="29000"/>
+                <address street="104  Rue Roussy" city="Orléans" country="France" zip="45000"/>
+            </addresses>
+            <contacts>
+                <contact firstName="Richard" lastName="Carrière" phoneNumber="+33651228980" emailAddress="richard.carriere@gosselin.fr"/>
+                <contact firstName="Arnaud" lastName="Lacroix" phoneNumber="+33647612309" emailAddress="arnaud.lacroix@gosselin.fr"/>
+            </contacts>
+        </coorporateCustomer>
+        <coorporateCustomer companyName="Guyon le Gros et Fils">
+            <addresses>
+                <address street="66  rue des Coudriers" city="Moulins" country="France" zip="03000"/>
+            </addresses>
+            <contacts>
+                <contact firstName="Susanne" lastName="Garcia" phoneNumber="+33678103217" emailAddress="susanne.garcia@guyon.fr"/>
+                <contact firstName="String" lastName="String" phoneNumber="String" emailAddress="String"/>
+            </contacts>
+        </coorporateCustomer>
+    </coorporateCustomers>
+    <individualCustomers>
+        <individualCustomer comments="Famille Charron">
+            <addresses>
+                <address street="31 rue la Boétie" city="Paris" country="Paris" zip="75008"/>
+            </addresses>
+            <contacts>
+                <contact firstName="Laurence" lastName="Charon" phoneNumber="+33675431903" emailAddress="laurence.charron@wanadoo.fr"/>
+                <contact firstName="Herbert" lastName="Charron" phoneNumber="+33675431039" emailAddress="herbert.charron@wanadoo.fr"/>
+            </contacts>
+        </individualCustomer>
+        <individualCustomer comments="Famille Lagueux">
+            <addresses>
+                <address street="82  avenue Jules Ferry" city="Stains" country="France" zip="93240"/>
+            </addresses>
+            <contacts>
+                <contact firstName="Corinne" lastName="Lagueux" phoneNumber="+33617229876" emailAddress="corinne.lagueux@wanadoo.fr"/>
+                <contact firstName="Bernard" lastName="Lagueux" phoneNumber="+33612513210" emailAddress="blagueux@yahoo.com"/>
+            </contacts>
+        </individualCustomer>
+    </individualCustomers>
+</customers>

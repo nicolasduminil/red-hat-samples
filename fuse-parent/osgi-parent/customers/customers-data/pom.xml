@@ -30,6 +30,11 @@
       <artifactId>jaxb-api-osgi</artifactId>
       <version>2.2.7</version>
     </dependency>
+    <dependency>
+      <groupId>fr.simplex-software.red-hat.fuse</groupId>
+      <artifactId>customers-jaxb</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>${project.artifactId}</finalName>
