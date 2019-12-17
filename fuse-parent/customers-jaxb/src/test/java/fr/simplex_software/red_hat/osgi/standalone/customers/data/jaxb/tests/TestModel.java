@@ -1,6 +1,5 @@
 package fr.simplex_software.red_hat.osgi.standalone.customers.data.jaxb.tests;
 
-import fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.entities.*;
 import fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.jaxb.*;
 import org.junit.*;
 
@@ -27,14 +26,14 @@ public class TestModel
   {
     Customers customers = (Customers)jaxbContext.createUnmarshaller().unmarshal(new FileInputStream("src/main/resources/xml/customers.xml"));
     assertNotNull(customers);
-    List<CoorporateCustomerType> coorporateCustomers = customers.getCoorporateCustomers().getCoorporateCustomers();
+    List<CoorporateCustomerType> coorporateCustomers = customers.getCoorporateCustomerList().getCoorporateCustomers();
     assertNotNull(coorporateCustomers);
     assertEquals(2, coorporateCustomers.size());
     assertEquals ("Gosselin S.A.", coorporateCustomers.get(0).getCompanyName());
-    List<IndividualCustomerType> individualCustomers = customers.getIndividualCustomers().getIndividualCustomers();
+    List<IndividualCustomerType> individualCustomers = customers.getIndividualCustomerList().getIndividualCustomers();
     assertNotNull(individualCustomers);
     assertEquals(2, individualCustomers.size());
-    assertEquals ("Laurence", individualCustomers.get(0).getContacts().getContacts().get(0).getFirstName());
+    assertEquals ("Laurence", individualCustomers.get(0).getContactList().getContacts().get(0).getFirstName());
   }
 
   @Test

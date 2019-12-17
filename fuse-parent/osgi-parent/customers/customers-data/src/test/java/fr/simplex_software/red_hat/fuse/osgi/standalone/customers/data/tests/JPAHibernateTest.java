@@ -8,8 +8,8 @@ import java.sql.*;
 
 public class JPAHibernateTest
 {
-  protected static EntityManagerFactory emf;
-  protected static EntityManager em;
+  private static EntityManagerFactory emf;
+  private static EntityManager em;
 
   @BeforeClass
   public static void init() throws FileNotFoundException, SQLException
@@ -24,5 +24,15 @@ public class JPAHibernateTest
     em.clear();
     em.close();
     emf.close();
+  }
+
+  public static EntityManagerFactory getEmf()
+  {
+    return emf;
+  }
+
+  public static EntityManager getEm()
+  {
+    return em;
   }
 }
