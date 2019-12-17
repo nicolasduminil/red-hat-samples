@@ -1,5 +1,7 @@
 package fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.entities;
 
+import fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.jaxb.*;
+
 import javax.persistence.*;
 import java.math.*;
 import java.util.*;
@@ -11,7 +13,7 @@ public class Contact
   private BigInteger contactId;
   private String firstName;
   private String lastName;
-  private List<String> phoneNumbers;
+  private String phoneNumber;
   private String emailAddress;
   private Customer customer;
 
@@ -19,14 +21,22 @@ public class Contact
   {
   }
 
-  public Contact(BigInteger contactId, String firstName, String lastName, List<String> phoneNumbers, String emailAddress, CoorporateCustomer coorporateCustomer, IndividualCustomer individualCustomer)
+  public Contact(BigInteger contactId, String firstName, String lastName, String phoneNumbers, String emailAddress, CoorporateCustomer coorporateCustomer, IndividualCustomer individualCustomer)
   {
     this.contactId = contactId;
     this.firstName = firstName;
     this.lastName = lastName;
-    this.phoneNumbers = phoneNumbers;
+    this.phoneNumber = phoneNumber;
     this.emailAddress = emailAddress;
     this.customer = customer;
+  }
+
+  public Contact (ContactType contactType)
+  {
+    this.firstName = contactType.getFirstName();
+    this.lastName = contactType.getLastName();
+    this.emailAddress = contactType.getEmailAddress();
+    this.phoneNumber = contactType.getPhoneNumber();
   }
 
   @Id
@@ -65,14 +75,14 @@ public class Contact
     this.lastName = lastName;
   }
 
-  public List<String> getPhoneNumbers()
+  public String getPhoneNumber()
   {
-    return phoneNumbers;
+    return phoneNumber;
   }
 
-  public void setPhoneNumbers(List<String> phoneNumbers)
+  public void setPhoneNumber(String phoneNumber)
   {
-    this.phoneNumbers = phoneNumbers;
+    this.phoneNumber = phoneNumber;
   }
 
   @Column(name = "EMAIL_ADDRESS", nullable = false, length = 80)

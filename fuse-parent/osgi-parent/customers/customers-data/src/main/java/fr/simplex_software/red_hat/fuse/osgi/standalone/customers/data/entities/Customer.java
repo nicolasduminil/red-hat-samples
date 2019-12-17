@@ -1,8 +1,11 @@
 package fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.entities;
 
+import fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.jaxb.*;
+
 import javax.persistence.*;
 import java.math.*;
 import java.util.*;
+import java.util.stream.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -23,6 +26,14 @@ public class Customer
     this.customerInternalName = customerInternalName;
     this.addresses = addresses;
   }
+
+  public Customer (CustomerType customerType)
+  {
+    this.customerInternalName = customerType.getInternalName();
+    this.addresses = customerType.getAddressList().getAddresses().stream().map(address -> new Address (address)).collect(Collectors.toList());
+    this.contacts = customerType.getContactList().getContacts().stream().map(contact -> new Contact (contact)).collect(Collectors.toList());
+  }
+
 
   @Id
   @SequenceGenerator(name = "CUSTOMERS_ID_GENERATOR", sequenceName = "CUSTOMERS_SEQ")

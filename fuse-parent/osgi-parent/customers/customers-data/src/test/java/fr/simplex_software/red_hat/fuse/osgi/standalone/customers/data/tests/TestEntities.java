@@ -26,14 +26,11 @@ public class TestEntities extends JPAHibernateTest
   @Test
   public void testCustomers() throws Exception
   {
-    Customers customers = (Customers)jaxbContext.createUnmarshaller().unmarshal(new FileInputStream("src/test/resources/xml/customers.xml"));
+    Customers customers = (Customers)jaxbContext.createUnmarshaller().unmarshal(new FileInputStream("src/test/resources/xml/customers2.xml"));
     assertNotNull(customers);
-    getEm().persist(customers);
-    //customers.getCoorporateCustomers().getCoorporateCustomers().forEach(customer -> );
+    customers.getCoorporateCustomerList().getCoorporateCustomers().forEach(c -> {
+      Customer customer = new Customer (c);
+      getEm().persist(customer);
+    });
   }
-
-  /*private Customer getCustomer (CustomerType customerType)
-  {
-    return new Customer (customerType.)
-  }*/
 }

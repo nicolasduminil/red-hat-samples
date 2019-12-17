@@ -1,5 +1,7 @@
 package fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.entities;
 
+import fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.jaxb.*;
+
 import javax.persistence.*;
 import java.math.*;
 
@@ -26,6 +28,15 @@ public class Address
     this.zip = zip;
     this.country = country;
     this.shippingAddress = shippingAddress;
+  }
+
+  public Address (AddressType addressType)
+  {
+    this.city = addressType.getCity();
+    this.country = addressType.getCountry();
+    this.shippingAddress = addressType.isShippingAddress();
+    this.state = addressType.getState();
+    this.zip = addressType.getZip();
   }
 
   @Column(name = "ADDRESS_STREET", nullable = false, length = 80)
