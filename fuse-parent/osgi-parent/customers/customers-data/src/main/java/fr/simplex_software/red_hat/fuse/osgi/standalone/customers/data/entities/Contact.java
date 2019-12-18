@@ -1,6 +1,8 @@
 package fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.entities;
 
 import fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.jaxb.*;
+import lombok.*;
+import lombok.extern.slf4j.*;
 
 import javax.persistence.*;
 import java.math.*;
@@ -8,8 +10,11 @@ import java.util.*;
 
 @Entity
 @Table (name="CONTACTS")
+@Slf4j
+@ToString
 public class Contact
 {
+  @ToString.Exclude
   private BigInteger contactId;
   private String firstName;
   private String lastName;

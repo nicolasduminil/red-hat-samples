@@ -5,8 +5,10 @@ import fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.jaxb.*;
 import lombok.extern.slf4j.*;
 import org.junit.*;
 
+import javax.persistence.*;
 import javax.xml.bind.*;
 import java.io.*;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -26,11 +28,16 @@ public class TestEntities extends JPAHibernateTest
   @Test
   public void testCustomers() throws Exception
   {
-    Customers customers = (Customers)jaxbContext.createUnmarshaller().unmarshal(new FileInputStream("src/test/resources/xml/customers2.xml"));
+    Customers customers = (Customers)jaxbContext.createUnmarshaller().unmarshal(new FileInputStream("src/test/resources/xml/customers.xml"));
     assertNotNull(customers);
     customers.getCoorporateCustomerList().getCoorporateCustomers().forEach(c -> {
       Customer customer = new Customer (c);
+      log.debug("### Customer: {}", customer.toString());
       getEm().persist(customer);
     });
+    Query q = getEm().createQuery("select c from CoorporateCustomer c");
+    List<Customer> custs = q.getResultList();
+    assertNotNull(custs);
+    assertEquals(2, custs.size());
   }
 }

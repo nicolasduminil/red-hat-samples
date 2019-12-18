@@ -1,13 +1,18 @@
 package fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.entities;
 
 import fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.jaxb.*;
+import lombok.*;
+import lombok.extern.slf4j.*;
 
 import javax.persistence.*;
 import java.math.*;
 
 @Embeddable
+@Slf4j
+@ToString
 public class Address
 {
+  @ToString.Exclude
   private BigInteger pk;
   private String street;
   private String city;
@@ -37,6 +42,7 @@ public class Address
     this.shippingAddress = addressType.isShippingAddress();
     this.state = addressType.getState();
     this.zip = addressType.getZip();
+    this.street = addressType.getStreet();
   }
 
   @Column(name = "ADDRESS_STREET", nullable = false, length = 80)
@@ -61,7 +67,7 @@ public class Address
     this.city = city;
   }
 
-  @Column(name = "ADDRESS_STATE", nullable = false, length = 40)
+  @Column(name = "ADDRESS_STATE", nullable = true, length = 40)
   public String getState()
   {
     return state;

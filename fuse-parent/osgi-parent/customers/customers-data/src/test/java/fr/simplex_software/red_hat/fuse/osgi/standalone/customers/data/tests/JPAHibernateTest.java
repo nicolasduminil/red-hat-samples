@@ -21,7 +21,7 @@ public class JPAHibernateTest
     em = emf.createEntityManager();
   }
 
-  @Before
+  /*@Before
   public void initializeDatabase()
   {
     Session session = em.unwrap(Session.class);
@@ -40,7 +40,7 @@ public class JPAHibernateTest
         }
       }
     });
-  }
+  }*/
 
   @AfterClass
   public static void tearDown()

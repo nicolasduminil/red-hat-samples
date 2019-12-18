@@ -1,6 +1,8 @@
 package fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.entities;
 
 import fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.jaxb.*;
+import lombok.*;
+import lombok.extern.slf4j.*;
 
 import javax.persistence.*;
 import java.math.*;
@@ -10,8 +12,11 @@ import java.util.stream.*;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "CUSTOMERS")
+@Slf4j
+@ToString
 public class Customer
 {
+  @ToString.Exclude
   private BigInteger customerId;
   private String customerInternalName;
   private List<Address> addresses;
