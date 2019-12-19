@@ -9,6 +9,7 @@ import javax.persistence.*;
 import javax.xml.bind.*;
 import java.io.*;
 import java.util.*;
+import java.util.stream.*;
 
 import static org.junit.Assert.*;
 
@@ -30,14 +31,35 @@ public class TestEntities extends JPAHibernateTest
   {
     Customers customers = (Customers)jaxbContext.createUnmarshaller().unmarshal(new FileInputStream("src/test/resources/xml/customers.xml"));
     assertNotNull(customers);
-    customers.getCoorporateCustomerList().getCoorporateCustomers().forEach(c -> {
-      Customer customer = new Customer (c);
-      log.debug("### Customer: {}", customer.toString());
-      getEm().persist(customer);
+    List<CoorporateCustomer> coorporateCustomers = customers.getCoorporateCustomerList().getCoorporateCustomers().stream().map(coorporateCustomerType -> new CoorporateCustomer(coorporateCustomerType)).collect(Collectors.toList());
+    getEm().getTransaction().begin();
+    coorporateCustomers.forEach(c -> {
+      log.debug("### Customer: {}", c.toString());
+      c.getContacts().forEach(contact -> {
+        contact.setCustomer(c);
+        log.debug ("### Contact: {}", contact);
+      });
+      getEm().persist(c);
     });
-    Query q = getEm().createQuery("select c from CoorporateCustomer c");
+    getEm().getTransaction().commit();
+    Query q = getEm().createQuery("select cc from CoorporateCustomer cc");
     List<Customer> custs = q.getResultList();
     assertNotNull(custs);
-    //assertEquals(2, custs.size());
+    assertEquals(2, custs.size());
+    List<IndividualCustomer> individualCustomers = customers.getIndividualCustomerList().getIndividualCustomers().stream().map(individualCustomerType -> new IndividualCustomer(individualCustomerType)).collect(Collectors.toList());
+    getEm().getTransaction().begin();
+    individualCustomers.forEach(c -> {
+      log.debug("### Customer: {}", c.toString());
+      c.getContacts().forEach(contact -> {
+        contact.setCustomer(c);
+        log.debug ("### Contact: {}", contact);
+      });
+      getEm().persist(c);
+    });
+    getEm().getTransaction().commit();
+    q = getEm().createQuery("select ic from IndividualCustomer ic");
+    custs = q.getResultList();
+    assertNotNull(custs);
+    assertEquals(2, custs.size());
   }
 }

@@ -20,6 +20,7 @@ public class Contact
   private String lastName;
   private String phoneNumber;
   private String emailAddress;
+  @ToString.Exclude
   private Customer customer;
 
   public Contact()

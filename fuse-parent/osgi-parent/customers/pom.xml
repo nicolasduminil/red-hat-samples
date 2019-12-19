@@ -11,6 +11,12 @@
   <artifactId>customers</artifactId>
   <packaging>pom</packaging>
   <name>Red Hat samples :: The Fuse Customers master POM module</name>
+  <dependencies>
+    <dependency>
+      <groupId>com.oracle.jdbc</groupId>
+      <artifactId>ojdbc8</artifactId>
+    </dependency>
+  </dependencies>
   <modules>
     <module>customers-data</module>
     <module>customers-service</module>
