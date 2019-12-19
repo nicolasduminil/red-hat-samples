@@ -34,11 +34,7 @@ public class TestEntities extends JPAHibernateTest
     List<CoorporateCustomer> coorporateCustomers = customers.getCoorporateCustomerList().getCoorporateCustomers().stream().map(coorporateCustomerType -> new CoorporateCustomer(coorporateCustomerType)).collect(Collectors.toList());
     getEm().getTransaction().begin();
     coorporateCustomers.forEach(c -> {
-      log.debug("### Customer: {}", c.toString());
-      c.getContacts().forEach(contact -> {
-        contact.setCustomer(c);
-        log.debug ("### Contact: {}", contact);
-      });
+      c.getContacts().forEach(contact -> contact.setCustomer(c));
       getEm().persist(c);
     });
     getEm().getTransaction().commit();
@@ -49,11 +45,7 @@ public class TestEntities extends JPAHibernateTest
     List<IndividualCustomer> individualCustomers = customers.getIndividualCustomerList().getIndividualCustomers().stream().map(individualCustomerType -> new IndividualCustomer(individualCustomerType)).collect(Collectors.toList());
     getEm().getTransaction().begin();
     individualCustomers.forEach(c -> {
-      log.debug("### Customer: {}", c.toString());
-      c.getContacts().forEach(contact -> {
-        contact.setCustomer(c);
-        log.debug ("### Contact: {}", contact);
-      });
+      c.getContacts().forEach(contact -> contact.setCustomer(c));
       getEm().persist(c);
     });
     getEm().getTransaction().commit();
@@ -61,5 +53,9 @@ public class TestEntities extends JPAHibernateTest
     custs = q.getResultList();
     assertNotNull(custs);
     assertEquals(2, custs.size());
+    q = getEm().createQuery("select c from Customer c");
+    custs = q.getResultList();
+    assertNotNull(custs);
+    assertEquals(4, custs.size());
   }
 }

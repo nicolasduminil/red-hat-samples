@@ -11,13 +11,16 @@
     <class>fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.entities.CoorporateCustomer</class>
     <class>fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.entities.IndividualCustomer</class>
     <properties>
-      <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver" />
+      <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:customers"/>
+      <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+      <!-- property name="javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver" />
       <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@vid-ol-db-01.np.srb.europa.eu:1521/ddwh.np.srb.europa.eu" />
       <property name="javax.persistence.jdbc.user" value="rdf" />
       <property name="javax.persistence.jdbc.password" value="h4D(51)eg_Q873" />
-      <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
-      <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
-      <property name="hibernate.format_sql" value="false"/>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle10gDialect"/-->
+      <property name="hibernate.hbm2ddl.auto" value="create"/>
+      <property name="hibernate.format_sql" value="true"/>
       <property name="hibernate.show_sql" value="true"/>
     </properties>
   </persistence-unit>
