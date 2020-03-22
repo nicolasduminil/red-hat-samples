@@ -1,34 +1,48 @@
 package fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.entities;
 
+import fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.jaxb.*;
+import lombok.*;
+import lombok.extern.slf4j.*;
+
 import javax.persistence.*;
 import java.math.*;
 import java.util.*;
 
 @Entity
 @Table (name="CONTACTS")
+@Slf4j
+@ToString
 public class Contact
 {
+  @ToString.Exclude
   private BigInteger contactId;
   private String firstName;
   private String lastName;
-  private List<String> phoneNumbers;
+  private String phoneNumber;
   private String emailAddress;
-  private CoorporateCustomer coorporateCustomer;
-  private IndividualCustomer individualCustomer;
+  @ToString.Exclude
+  private Customer customer;
 
   public Contact()
   {
   }
 
-  public Contact(BigInteger contactId, String firstName, String lastName, List<String> phoneNumbers, String emailAddress, CoorporateCustomer coorporateCustomer, IndividualCustomer individualCustomer)
+  public Contact(BigInteger contactId, String firstName, String lastName, String phoneNumbers, String emailAddress, CoorporateCustomer coorporateCustomer, IndividualCustomer individualCustomer)
   {
     this.contactId = contactId;
     this.firstName = firstName;
     this.lastName = lastName;
-    this.phoneNumbers = phoneNumbers;
+    this.phoneNumber = phoneNumber;
     this.emailAddress = emailAddress;
-    this.individualCustomer = individualCustomer;
-    this.coorporateCustomer = coorporateCustomer;
+    this.customer = customer;
+  }
+
+  public Contact (ContactType contactType)
+  {
+    this.firstName = contactType.getFirstName();
+    this.lastName = contactType.getLastName();
+    this.emailAddress = contactType.getEmailAddress();
+    this.phoneNumber = contactType.getPhoneNumber();
   }
 
   @Id
@@ -67,14 +81,14 @@ public class Contact
     this.lastName = lastName;
   }
 
-  public List<String> getPhoneNumbers()
+  public String getPhoneNumber()
   {
-    return phoneNumbers;
+    return phoneNumber;
   }
 
-  public void setPhoneNumbers(List<String> phoneNumbers)
+  public void setPhoneNumber(String phoneNumber)
   {
-    this.phoneNumbers = phoneNumbers;
+    this.phoneNumber = phoneNumber;
   }
 
   @Column(name = "EMAIL_ADDRESS", nullable = false, length = 80)
@@ -90,24 +104,13 @@ public class Contact
 
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "CUSTOMER_ID")
-  public CoorporateCustomer getCoorporateCustomer()
+  public Customer getCustomer()
   {
-    return coorporateCustomer;
+    return customer;
   }
 
-  public void setCoorporateCustomer(CoorporateCustomer coorporateCustomer)
+  public void setCustomer(Customer customer)
   {
-    this.coorporateCustomer = coorporateCustomer;
-  }
-
-  @OneToOne(mappedBy = "contact")
-  public IndividualCustomer getIndividualCustomer()
-  {
-    return individualCustomer;
-  }
-
-  public void setIndividualCustomer(IndividualCustomer individualCustomer)
-  {
-    this.individualCustomer = individualCustomer;
+    this.customer = customer;
   }
 }

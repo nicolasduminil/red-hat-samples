@@ -1,34 +1,25 @@
 package fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.entities;
 
+import fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.jaxb.*;
+
 import javax.persistence.*;
 import java.util.*;
 
 @Entity
-@Table (name = "INDIVIDUAL_CUSTOMER")
+@Table (name = "INDIVIDUAL_CUSTOMERS")
 public class IndividualCustomer extends Customer
 {
-  private Contact contact;
-
-  public IndividualCustomer(Contact contact)
+  public IndividualCustomer()
   {
-    this.contact = contact;
   }
 
-  public IndividualCustomer(String customerInternalName, List<Address> addresses, Contact contact)
+  public IndividualCustomer(String customerInternalName)
   {
-    super(customerInternalName, addresses);
-    this.contact = contact;
+    super(customerInternalName, new ArrayList<Address>(), new ArrayList<Contact>());
   }
 
-  @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn(name = "CONTACT_ID", referencedColumnName = "CUSTOMER_ID")
-  public Contact getContact()
+  public IndividualCustomer (IndividualCustomerType individualCustomerType)
   {
-    return contact;
-  }
-
-  public void setContact(Contact contact)
-  {
-    this.contact = contact;
+    super (individualCustomerType);
   }
 }

@@ -32,6 +32,14 @@
       <artifactId>javax.interceptor-api</artifactId>
       <version>1.2</version>
     </dependency>
+    <dependency>
+      <groupId>org.apache.karaf.shell</groupId>
+      <artifactId>org.apache.karaf.shell.core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.oracle.jdbc</groupId>
+      <artifactId>ojdbc8</artifactId>
+    </dependency>
   </dependencies>
   <build>
     <plugins>

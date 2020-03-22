@@ -1,24 +1,30 @@
 package fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.entities;
 
+import fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.jaxb.*;
+
 import javax.persistence.*;
 import java.util.*;
 
 @Entity
-@Table (name = "COORPORATE_CUSTOMER")
+@Table (name = "COORPORATE_CUSTOMERS")
 public class CoorporateCustomer extends Customer
 {
   private String companyName;
-  private List<Contact> contacts;
 
   public CoorporateCustomer()
   {
   }
 
-  public CoorporateCustomer(String customerInternalName, List<Address> addresses, String companyName, List<Contact> contacts)
+  public CoorporateCustomer(String customerInternalName, List<Address> addresses, String companyName)
   {
-    super(customerInternalName, addresses);
+    super(customerInternalName, addresses, new ArrayList<Contact>());
     this.companyName = companyName;
-    this.contacts = contacts;
+  }
+
+  public CoorporateCustomer (CoorporateCustomerType coorporateCustomerType)
+  {
+    super (coorporateCustomerType);
+    this.companyName = coorporateCustomerType.getCompanyName();
   }
 
   @Column(name = "COMPANY_NAME", nullable = false, length = 40)
@@ -30,16 +36,5 @@ public class CoorporateCustomer extends Customer
   public void setCompanyName(String companyName)
   {
     this.companyName = companyName;
-  }
-
-  @OneToMany(mappedBy = "coorporateCustomer", cascade = CascadeType.ALL, orphanRemoval = true)
-  public List<Contact> getContacts()
-  {
-    return contacts;
-  }
-
-  public void setContacts(List<Contact> contacts)
-  {
-    this.contacts = contacts;
   }
 }

@@ -8,6 +8,7 @@
 	<Folder FolderName="HTML Files" ExtStr="html;htm;xhtml;asp"/>
 	<Folder FolderName="DTD/Schemas" ExtStr="dtd;dcd;xdr;biz;xsd">
 		<File FilePath="customers.xsd" HomeFolder="Yes"/>
+		<File FilePath="customers2.xsd" HomeFolder="Yes"/>
 	</Folder>
 	<Folder FolderName="Entities" ExtStr="ent"/>
 </Project>

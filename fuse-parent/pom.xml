@@ -12,5 +12,6 @@
   <modules>
     <module>osgi-parent</module>
     <module>javaee-parent</module>
+    <module>customers-jaxb</module>
   </modules>
 </project>

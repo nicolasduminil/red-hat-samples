@@ -1,27 +1,44 @@
 package fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.entities;
 
+import fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.jaxb.*;
+import lombok.*;
+import lombok.extern.slf4j.*;
+
 import javax.persistence.*;
 import java.math.*;
 import java.util.*;
+import java.util.stream.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "CUSTOMERS")
+@Slf4j
+@ToString
 public class Customer
 {
+  @ToString.Exclude
   private BigInteger customerId;
   private String customerInternalName;
   private List<Address> addresses;
+  private List<Contact> contacts;
 
   public Customer()
   {
   }
 
-  public Customer(String customerInternalName, List<Address> addresses)
+  public Customer(String customerInternalName, List<Address> addresses, List<Contact> contacts)
   {
     this.customerInternalName = customerInternalName;
     this.addresses = addresses;
   }
+
+  public Customer (CustomerType customerType)
+  {
+    this.customerInternalName = customerType.getInternalName();
+    this.addresses = customerType.getAddressList().getAddresses().stream().map(address -> new Address (address)).collect(Collectors.toList());
+    this.contacts = customerType.getContactList().getContacts().stream().map(contact -> new Contact (contact)).collect(Collectors.toList());
+  }
+
 
   @Id
   @SequenceGenerator(name = "CUSTOMERS_ID_GENERATOR", sequenceName = "CUSTOMERS_SEQ")
@@ -58,5 +75,16 @@ public class Customer
   public void setAddresses(List<Address> addresses)
   {
     this.addresses = addresses;
+  }
+
+  @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+  public List<Contact> getContacts()
+  {
+    return contacts;
+  }
+
+  public void setContacts(List<Contact> contacts)
+  {
+    this.contacts = contacts;
   }
 }

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>fuse-parent</artifactId>
+    <groupId>fr.simplex-software.red-hat.fuse</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>customers-jaxb</artifactId>
+  <name>Red Hat samples :: The Fuse Customers JAX-B module</name>
+  <build>
+    <finalName>${project.artifactId}</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jaxb2-maven-plugin</artifactId>
+        <version>2.5.0</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>xjc</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <packageName>fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.jaxb</packageName>
+          <outputDirectory>${basedir}/src/main/java</outputDirectory>
+          <sources>
+            <source>${basedir}/src/main/resources/xsd</source>
+          </sources>
+          <extension>true</extension>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
