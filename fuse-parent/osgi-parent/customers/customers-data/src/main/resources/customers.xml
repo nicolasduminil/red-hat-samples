@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<customers>
-  <customer internalName="SRB">
-    <addresses>
-      <address street="Treunrenberg" city="Brussels" country="Belgium" zip="1000"/>
-    </addresses>
-  </customer>
+<customers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:///C:/Users/Nicolas%20DUMINIL/red-hat-samples/fuse-parent/osgi-parent/customers/customers-data/src/main/resources/customers.xsd">
+	<customer internalName="SRB">
+		<addresses>
+			<address street="Treunrenberg" city="Brussels" country="Belgium" zip="1000"/>
+		</addresses>
+	</customer>
 </customers>
