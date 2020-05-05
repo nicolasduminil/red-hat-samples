@@ -50,7 +50,7 @@
         <extensions>true</extensions>
         <configuration>
           <instructions>
-            <Export-Package>fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data</Export-Package>
+            <Export-Package>fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.*</Export-Package>
             <Import-Package>
               javax.persistence,
               org.hibernate.proxy,
