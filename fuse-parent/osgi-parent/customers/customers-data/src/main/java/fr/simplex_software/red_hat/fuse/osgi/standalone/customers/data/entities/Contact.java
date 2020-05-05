@@ -6,7 +6,6 @@ import lombok.extern.slf4j.*;
 
 import javax.persistence.*;
 import java.math.*;
-import java.util.*;
 
 @Entity
 @Table (name="CONTACTS")

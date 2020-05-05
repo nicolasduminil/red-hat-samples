@@ -16,17 +16,18 @@
     <feature>transaction</feature>
     <feature>jndi</feature>
     <feature>pax-jdbc-config</feature>
-    <feature>pax-jdbc-oracle</feature>
+    <feature>pax-jdbc-h2</feature>
+    <!--feature>pax-jdbc-oracle</feature-->
     <feature>pax-jdbc-pool-dbcp2</feature>
     <feature>jdbc</feature>
     <feature dependency="true">aries-blueprint</feature>
-    <!--feature version="[2,3)">jpa</feature>
-    <feature version="[5,6)">hibernate</feature-->
     <feature>jpa</feature>
     <feature>hibernate</feature>
+    <bundle>wrap:mvn:fr.simplex-software.red-hat.fuse/customers-jaxb/${project.version}</bundle>
     <bundle>mvn:fr.simplex-software.red-hat.fuse.osgi/customers-data/${project.version}</bundle>
   </feature>
   <feature name="customers-service" version="${project.version}">
+    <feature version="${project.version}">customers-data</feature>
     <bundle>mvn:fr.simplex-software.red-hat.fuse.osgi/customers-service/${project.version}</bundle>
   </feature>
 </features>

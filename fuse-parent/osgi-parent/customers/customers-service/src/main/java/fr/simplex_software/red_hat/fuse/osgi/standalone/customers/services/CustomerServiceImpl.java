@@ -1,6 +1,7 @@
-package fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.services;
+package fr.simplex_software.red_hat.fuse.osgi.standalone.customers.services;
 
 import fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.entities.*;
+import fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.services.*;
 
 import javax.persistence.*;
 import javax.transaction.*;
