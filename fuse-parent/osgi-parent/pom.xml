@@ -19,6 +19,21 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+      <dependency>
+        <groupId>fr.simplex-software.red-hat.fuse.osgi</groupId>
+        <artifactId>customers-data</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>fr.simplex-software.red-hat.fuse.osgi</groupId>
+        <artifactId>customers-service</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>fr.simplex-software.red-hat.fuse.osgi</groupId>
+        <artifactId>customers-command</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
   <modules>
@@ -32,6 +47,25 @@
           <groupId>org.apache.felix</groupId>
           <artifactId>maven-bundle-plugin</artifactId>
           <version>4.2.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.karaf.tooling</groupId>
+          <artifactId>karaf-maven-plugin</artifactId>
+          <version>4.2.8</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.karaf.tooling</groupId>
+          <artifactId>karaf-services-maven-plugin</artifactId>
+          <version>4.2.8</version>
+          <executions>
+            <execution>
+              <id>service-metadata-generate</id>
+              <phase>process-classes</phase>
+              <goals>
+                <goal>service-metadata-generate</goal>
+              </goals>
+            </execution>
+          </executions>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>

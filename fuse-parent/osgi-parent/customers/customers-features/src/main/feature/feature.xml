@@ -5,7 +5,11 @@
   <feature name="customers-datasource" version="${project.version}">
     <config name="org.ops4j.datasource-customers">
       osgi.jdbc.driver.class=oracle.jdbc.OracleDriver
-      databaseName=customers;create=true
+      osgi.jdbc.driver.name=oracle
+      url=jdbc:oracle:thin:@localhost:1521:xe
+      user=nicolas
+      password=California1
+      dataSourceName=oracle.jdbc.pool.OracleDataSource
       dataSourceName=customers
     </config>
     <capability>
@@ -29,5 +33,9 @@
   <feature name="customers-service" version="${project.version}">
     <feature version="${project.version}">customers-data</feature>
     <bundle>mvn:fr.simplex-software.red-hat.fuse.osgi/customers-service/${project.version}</bundle>
+  </feature>
+  <feature name="customers-command" version="${project.version}">
+    <feature version="${project.version}">customers-service</feature>
+    <bundle>mvn:fr.simplex-software.red-hat.fuse.osgi/customers-command/${project.version}</bundle>
   </feature>
 </features>

@@ -15,5 +15,6 @@
     <module>customers-data</module>
     <module>customers-service</module>
     <module>customers-features</module>
+    <module>customers-command</module>
   </modules>
 </project>

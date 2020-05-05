@@ -1,0 +1,5 @@
+feature:uninstall customers-command
+feature:uninstall customers-service
+feature:uninstall customers-datasource
+feature:repo-remove mvn:fr.simplex-software.red-hat.fuse.osgi/customers-features/0.0.1-SNAPSHOT/xml
+bundle:uninstall wrap:mvn:com.oracle.jdbc/ojdbc8/12.2.0.1
