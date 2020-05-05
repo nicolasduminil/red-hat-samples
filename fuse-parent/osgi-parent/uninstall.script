@@ -1,4 +1,5 @@
 feature:uninstall customers-command
+bundle:uninstall mvn:org.ops4j.pax.jdbc/pax-jdbc-oracle/1.4.5
 feature:uninstall customers-service
 feature:uninstall customers-datasource
 feature:repo-remove mvn:fr.simplex-software.red-hat.fuse.osgi/customers-features/0.0.1-SNAPSHOT/xml

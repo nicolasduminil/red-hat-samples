@@ -38,7 +38,11 @@
         <configuration>
           <instructions>
             <Private-Package>fr.simplex_software.red_hat.fuse.osgi.standalone.customers.command</Private-Package>
-            <Import-Package>fr.simplex_software.red_hat.osgi.standalone.customers.data.*, org.apache.karaf.shell*;version="[4,5)", *</Import-Package>
+            <Import-Package>fr.simplex_software.red_hat.osgi.standalone.customers.data.*,
+              fr.simplex_software.red_hat.fuse.osgi.standalone.customers.services,
+              org.apache.karaf.shell*;version="[4,5)",
+              *
+            </Import-Package>
           </instructions>
         </configuration>
       </plugin>
