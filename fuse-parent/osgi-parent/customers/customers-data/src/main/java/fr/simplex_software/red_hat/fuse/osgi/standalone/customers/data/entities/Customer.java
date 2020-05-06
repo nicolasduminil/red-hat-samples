@@ -30,13 +30,14 @@ public class Customer
   {
     this.customerInternalName = customerInternalName;
     this.addresses = addresses;
+    this.contacts = contacts;
   }
 
-  public Customer (CustomerType customerType)
+  public Customer(CustomerType customerType)
   {
     this.customerInternalName = customerType.getInternalName();
-    this.addresses = customerType.getAddressList().getAddresses().stream().map(address -> new Address (address)).collect(Collectors.toList());
-    this.contacts = customerType.getContactList().getContacts().stream().map(contact -> new Contact (contact)).collect(Collectors.toList());
+    this.addresses = customerType.getAddressList().getAddresses().stream().map(address -> new Address(address)).collect(Collectors.toList());
+    this.contacts = customerType.getContactList().getContacts().stream().map(contact -> new Contact(contact)).collect(Collectors.toList());
   }
 
 
@@ -66,7 +67,7 @@ public class Customer
   }
 
   @ElementCollection
-  @CollectionTable(name="ADDRESSES", joinColumns=@JoinColumn(name="CUSTOMER_ID"))
+  @CollectionTable(name = "ADDRESSES", joinColumns = @JoinColumn(name = "CUSTOMER_ID"))
   public List<Address> getAddresses()
   {
     return addresses;
@@ -86,5 +87,25 @@ public class Customer
   public void setContacts(List<Contact> contacts)
   {
     this.contacts = contacts;
+  }
+
+  public void addContact(Contact contact)
+  {
+    this.contacts.add(contact);
+  }
+
+  public void removeContact(Contact contact)
+  {
+    this.contacts.remove(contact);
+  }
+
+  public void addAddress(Address address)
+  {
+    this.getAddresses().add(address);
+  }
+
+  public void removeAddress(Address address)
+  {
+    this.getAddresses().remove(address);
   }
 }

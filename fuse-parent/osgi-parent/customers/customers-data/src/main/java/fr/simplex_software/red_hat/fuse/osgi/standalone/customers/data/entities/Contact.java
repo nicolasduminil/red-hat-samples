@@ -26,13 +26,23 @@ public class Contact
   {
   }
 
-  public Contact(BigInteger contactId, String firstName, String lastName, String phoneNumbers, String emailAddress, CoorporateCustomer coorporateCustomer, IndividualCustomer individualCustomer)
+  public Contact(String firstName, String lastName, String phoneNumber, String emailAddress)
   {
-    this.contactId = contactId;
     this.firstName = firstName;
     this.lastName = lastName;
     this.phoneNumber = phoneNumber;
     this.emailAddress = emailAddress;
+  }
+
+  public Contact(BigInteger contactId, String firstName, String lastName, String phoneNumber, String emailAddress)
+  {
+    this (firstName, lastName, phoneNumber, emailAddress);
+    this.contactId = contactId;
+  }
+
+  public Contact(String firstName, String lastName, String phoneNumber, String emailAddress, Customer customer)
+  {
+    this (firstName, lastName, phoneNumber, emailAddress);
     this.customer = customer;
   }
 

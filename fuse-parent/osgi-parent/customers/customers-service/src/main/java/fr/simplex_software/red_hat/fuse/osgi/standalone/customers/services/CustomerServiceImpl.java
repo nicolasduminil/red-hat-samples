@@ -22,17 +22,16 @@ public class CustomerServiceImpl implements CustomerDataService
   @Transactional(Transactional.TxType.SUPPORTS)
   public List<Customer> getCustomers()
   {
-    TypedQuery<Customer> query = entityManager.createQuery("SELECT c FROM Customer c", Customer.class);
-    return query.getResultList();
+    return entityManager.createQuery("SELECT c FROM Customer c", Customer.class).getResultList();
   }
 
   @Override
   @Transactional(Transactional.TxType.SUPPORTS)
   public Customer getCustomer(BigInteger id)
   {
-    TypedQuery<Customer> query = entityManager.createQuery("SELECT c FROM Customer c WHERE c.id=:id", Customer.class);
-    query.setParameter("id", id);
-    return query.getSingleResult();
+    Customer customer = entityManager.createQuery("SELECT distinct c FROM Customer c join fetch c.contacts WHERE c.id=:id", Customer.class).setParameter("id", id).getSingleResult();
+    customer.setAddresses(getAddresses(id));
+    return customer;
   }
 
   @Override
@@ -47,5 +46,79 @@ public class CustomerServiceImpl implements CustomerDataService
   public void removeCustomer(Customer customer)
   {
     entityManager.remove(getCustomer(customer.getCustomerId()));
+  }
+
+  @Override
+  @Transactional(Transactional.TxType.SUPPORTS)
+  public List<Contact> getContacts()
+  {
+    return entityManager.createQuery("SELECT c FROM Contact c", Contact.class).getResultList();
+  }
+
+  @Override
+  @Transactional(Transactional.TxType.SUPPORTS)
+  public Contact getContact(BigInteger id)
+  {
+    return entityManager.createQuery("SELECT c FROM Contact c where c.id=:id", Contact.class).setParameter("id", id).getSingleResult();
+  }
+
+  @Override
+  @Transactional(Transactional.TxType.REQUIRES_NEW)
+  public void createContact(Contact contact)
+  {
+    entityManager.persist(contact);
+  }
+
+  @Override
+  @Transactional(Transactional.TxType.REQUIRES_NEW)
+  public void removeContact(Contact contact)
+  {
+    entityManager.remove(getContact(contact.getContactId()));
+  }
+
+  @Override
+  @Transactional(Transactional.TxType.SUPPORTS)
+  public List<Address> getAddresses(BigInteger id)
+  {
+    return entityManager.createQuery("SELECT a FROM Customer c join c.addresses a where c.id=:id", Address.class).setParameter("id", id).getResultList();
+  }
+
+  @Override
+  @Transactional(Transactional.TxType.SUPPORTS)
+  public Address getAddress(BigInteger id)
+  {
+    return entityManager.createQuery("SELECT c FROM Customer c join c.addresses where c.id=:id", Address.class).setParameter("id", id).getSingleResult();
+  }
+
+  @Override
+  @Transactional(Transactional.TxType.REQUIRES_NEW)
+  public void createAddress(Address address, BigInteger id)
+  {
+    Customer customer = entityManager.createQuery("SELECT c FROM Customer c where c.id=:id", Customer.class).setParameter("id", id).getSingleResult();
+    customer.addAddress(address);
+    entityManager.merge(customer);
+  }
+
+  @Override
+  @Transactional(Transactional.TxType.REQUIRES_NEW)
+  public void removeAddress(Address address, BigInteger id)
+  {
+    Customer customer = entityManager.createQuery("SELECT c FROM Customer c where c.id=:id", Customer.class).setParameter("id", id).getSingleResult();
+    customer.removeAddress(address);
+    entityManager.merge(customer);
+  }
+
+  @Override
+  @Transactional(Transactional.TxType.SUPPORTS)
+  public List<Contact> getContactsByCustomer(BigInteger id)
+  {
+    return entityManager.createQuery("SELECT c FROM Contact c join c.customer where c.customer.id=:id", Contact.class).setParameter("id", id).getResultList();
+  }
+
+  @Override
+  @Transactional(Transactional.TxType.REQUIRES_NEW)
+  public void removeCustomerById(BigInteger id)
+  {
+    removeCustomer(getCustomer(id));
   }
 }

@@ -18,6 +18,11 @@ public class IndividualCustomer extends Customer
     super(customerInternalName, new ArrayList<Address>(), new ArrayList<Contact>());
   }
 
+  public IndividualCustomer (String customerInternalName, List<Address> addresses, List<Contact> contacts)
+  {
+    super (customerInternalName, addresses, contacts);
+  }
+
   public IndividualCustomer (IndividualCustomerType individualCustomerType)
   {
     super (individualCustomerType);

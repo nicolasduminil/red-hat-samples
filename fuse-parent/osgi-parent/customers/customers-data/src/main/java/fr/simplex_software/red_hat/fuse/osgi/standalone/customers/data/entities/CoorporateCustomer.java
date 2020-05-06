@@ -15,6 +15,12 @@ public class CoorporateCustomer extends Customer
   {
   }
 
+  public CoorporateCustomer(String customerInternalName, String companyName)
+  {
+    super(customerInternalName, new ArrayList<Address>(), new ArrayList<Contact>());
+    this.companyName = companyName;
+  }
+
   public CoorporateCustomer(String customerInternalName, List<Address> addresses, String companyName)
   {
     super(customerInternalName, addresses, new ArrayList<Contact>());
