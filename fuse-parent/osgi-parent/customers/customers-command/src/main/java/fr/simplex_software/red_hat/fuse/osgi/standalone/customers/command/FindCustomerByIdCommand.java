@@ -1,5 +1,6 @@
 package fr.simplex_software.red_hat.fuse.osgi.standalone.customers.command;
 
+import fr.simplex_software.red_hat.fuse.osgi.standalone.customers.command.completer.*;
 import fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.services.*;
 import org.apache.karaf.shell.api.action.*;
 import org.apache.karaf.shell.api.action.lifecycle.*;
@@ -13,6 +14,7 @@ public class FindCustomerByIdCommand implements Action
   @Reference
   private CustomerDataService customerManagementService;
   @Argument(index = 0, name = "id", description = "Customer ID", required = true, multiValued = false)
+  @Completion(CustomerIdCompleter.class)
   private BigInteger id;
 
   @Override

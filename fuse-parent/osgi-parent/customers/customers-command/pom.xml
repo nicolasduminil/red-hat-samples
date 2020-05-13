@@ -24,6 +24,48 @@
       <groupId>fr.simplex-software.red-hat.fuse.osgi</groupId>
       <artifactId>customers-service</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.ops4j.pax.exam</groupId>
+      <artifactId>pax-exam</artifactId>
+      <version>4.13.3</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.ops4j.pax.exam</groupId>
+      <artifactId>pax-exam-container-karaf</artifactId>
+      <version>4.13.3</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.ops4j.pax.exam</groupId>
+      <artifactId>pax-exam-junit4</artifactId>
+      <version>4.13.3</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.ops4j.pax.exam</groupId>
+      <artifactId>pax-exam-link-mvn</artifactId>
+      <version>4.13.3</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.geronimo.specs</groupId>
+      <artifactId>geronimo-atinject_1.0_spec</artifactId>
+      <version>1.2</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.core</artifactId>
+      <version>6.0.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.osgi</groupId>
+      <artifactId>org.osgi.compendium</artifactId>
+      <version>5.0.0</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
@@ -38,9 +80,10 @@
         <configuration>
           <instructions>
             <Private-Package>fr.simplex_software.red_hat.fuse.osgi.standalone.customers.command</Private-Package>
-            <Import-Package>fr.simplex_software.red_hat.osgi.standalone.customers.data.*,
+            <Import-Package>
               fr.simplex_software.red_hat.fuse.osgi.standalone.customers.services,
               org.apache.karaf.shell*;version="[4,5)",
+              !org.slf4j,
               *
             </Import-Package>
           </instructions>
