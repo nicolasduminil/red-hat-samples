@@ -4,3 +4,4 @@ feature:install customers-datasource
 feature:install customers-service
 bundle:install -s mvn:org.ops4j.pax.jdbc/pax-jdbc-oracle/1.4.5
 feature:install customers-command
+feature:install customers-rest
