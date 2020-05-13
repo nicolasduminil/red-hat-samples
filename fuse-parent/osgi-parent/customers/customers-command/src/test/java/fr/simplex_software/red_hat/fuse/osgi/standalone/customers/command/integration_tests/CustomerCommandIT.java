@@ -1,12 +1,12 @@
-package fr.simplex_software.red_Hat.fuse.osgi.standalone.customers.command.integration_tests;
+package fr.simplex_software.red_hat.fuse.osgi.standalone.customers.command.integration_tests;
 
 import lombok.extern.slf4j.*;
 import org.apache.karaf.shell.api.console.*;
 import org.junit.*;
 import org.junit.runner.*;
+import org.ops4j.pax.exam.Configuration;
 import org.ops4j.pax.exam.*;
 import org.ops4j.pax.exam.junit.*;
-import org.ops4j.pax.exam.junit.Configuration;
 import org.ops4j.pax.exam.karaf.options.*;
 
 import javax.inject.*;
@@ -113,7 +113,7 @@ public class CustomerCommandIT
     try
     {
       executor.submit(commandFuture);
-      resp = commandFuture.get(5000L, TimeUnit.MILLISECONDS);
+      resp =  commandFuture.get(5000L, TimeUnit.MILLISECONDS);
     }
     catch (Exception ex)
     {
