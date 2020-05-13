@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jxb="http://java.sun.com/xml/ns/jaxb" xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" jxb:extensionBindingPrefixes="xjc" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" elementFormDefault="qualified" attributeFormDefault="unqualified" jxb:version="2.1" vc:minVersion="1.1">
+  <xs:annotation>
+    <xs:appinfo>
+      <jxb:globalBindings>              
+        <xjc:simple/>
+      </jxb:globalBindings>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:complexType name="AddressType">
+		<xs:attribute name="street" type="xs:string" use="required"/>
+		<xs:attribute name="city" type="xs:string" use="required"/>
+		<xs:attribute name="state" type="xs:string" use="optional"/>
+		<xs:attribute name="zip" type="xs:string" use="required"/>
+		<xs:attribute name="country" type="xs:string" use="required"/>
+		<xs:attribute name="shippingAddress" type="xs:boolean" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="ContactType">
+		<xs:attribute name="firstName" type="xs:string" use="required"/>
+		<xs:attribute name="lastName" type="xs:string" use="required"/>
+		<xs:attribute name="phoneNumber" type="xs:string" use="required"/>
+		<xs:attribute name="emailAddress" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="CustomerType">
+		<xs:sequence>
+			<xs:sequence>
+				<xs:element name="addressList">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="address" type="AddressType" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:sequence>
+				<xs:element name="contactList">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="contact" type="ContactType" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:sequence>
+		<xs:attribute name="internalName" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="CoorporateCustomerType">
+		<xs:complexContent>
+			<xs:extension base="CustomerType">
+				<xs:attribute name="companyName" type="xs:string" use="required"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="IndividualCustomerType">
+		<xs:complexContent>
+			<xs:extension base="CustomerType">
+				<xs:attribute name="comments" type="xs:string" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="customers">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="coorporateCustomerList">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="coorporateCustomer" type="CoorporateCustomerType" maxOccurs="unbounded">
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="individualCustomerList">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="individualCustomer" type="IndividualCustomerType" maxOccurs="unbounded">
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
