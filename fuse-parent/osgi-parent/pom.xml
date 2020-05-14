@@ -13,9 +13,14 @@
   <dependencyManagement>
     <dependencies>
       <dependency>
-        <groupId>org.jboss.redhat-fuse</groupId>
+        <!--groupId>org.jboss.redhat-fuse</groupId>
         <artifactId>fuse-karaf-bom</artifactId>
         <version>7.5.0.fuse-750029-redhat-00002</version>
+        <type>pom</type>
+        <scope>import</scope-->
+        <groupId>org.apache.karaf</groupId>
+        <artifactId>karaf</artifactId>
+        <version>4.2.8</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -32,6 +37,11 @@
       <dependency>
         <groupId>fr.simplex-software.red-hat.fuse.osgi</groupId>
         <artifactId>customers-command</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>fr.simplex-software.red-hat.fuse</groupId>
+        <artifactId>customers-jaxb</artifactId>
         <version>0.0.1-SNAPSHOT</version>
       </dependency>
     </dependencies>

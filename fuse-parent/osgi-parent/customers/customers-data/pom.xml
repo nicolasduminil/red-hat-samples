@@ -18,26 +18,27 @@
       <version>2.1.0</version>
     </dependency>
     <dependency>
-      <groupId>javax.transaction</groupId>
-      <artifactId>javax.transaction-api</artifactId>
+      <groupId>jakarta.transaction</groupId>
+      <artifactId>jakarta.transaction-api</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>javax.interceptor</groupId>
-      <artifactId>javax.interceptor-api</artifactId>
+      <groupId>jakarta.interceptor</groupId>
+      <artifactId>jakarta.interceptor-api</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-entitymanager</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>fr.simplex-software.red-hat.fuse</groupId>
       <artifactId>customers-jaxb</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
-      <version>1.4.192</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
