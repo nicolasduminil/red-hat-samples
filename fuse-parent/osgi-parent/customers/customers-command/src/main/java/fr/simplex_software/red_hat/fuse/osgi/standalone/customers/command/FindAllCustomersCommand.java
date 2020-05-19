@@ -1,8 +1,7 @@
 package fr.simplex_software.red_hat.fuse.osgi.standalone.customers.command;
 
-import fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.entities.*;
-import fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.services.*;
-import fr.simplex_software.red_hat.fuse.osgi.standalone.customers.services.*;
+import fr.simplex_software.red_hat.fuse.standalone.customers.data.entities.*;
+import fr.simplex_software.red_hat.fuse.standalone.customers.data.services.*;
 import org.apache.karaf.shell.api.action.*;
 import org.apache.karaf.shell.api.action.lifecycle.*;
 import org.apache.karaf.shell.support.table.*;

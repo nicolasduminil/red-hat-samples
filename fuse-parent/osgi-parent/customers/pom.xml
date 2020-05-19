@@ -12,7 +12,6 @@
   <packaging>pom</packaging>
   <name>Red Hat samples :: The Fuse Customers master POM module</name>
   <modules>
-    <module>customers-data</module>
     <module>customers-service</module>
     <module>customers-features</module>
     <module>customers-command</module>

@@ -1,11 +1,9 @@
 package fr.simplex_software.red_hat.fuse.osgi.standalone.customers.command;
 
-import fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.entities.*;
-import fr.simplex_software.red_hat.fuse.osgi.standalone.customers.data.services.*;
+import fr.simplex_software.red_hat.fuse.standalone.customers.data.entities.*;
+import fr.simplex_software.red_hat.fuse.standalone.customers.data.services.*;
 import org.apache.karaf.shell.api.action.*;
 import org.apache.karaf.shell.api.action.lifecycle.*;
-
-import java.util.*;
 
 @Service
 @Command(scope = "customers", name = "create-individual", description = "Create an individual customer")
@@ -38,7 +36,7 @@ public class CreateIndividualCustomerCommand implements Action
   public Object execute() throws Exception
   {
     Customer customer = new IndividualCustomer(internalName);
-    customer.addAddress(new Address (street, city, state, zip, country, Boolean.TRUE));
+    customer.addAddress(new Address(street, city, state, zip, country, Boolean.TRUE));
     customer.addContact(new Contact(firstName, lastName, phoneNumber, emailAddress, customer));
     customerManagementService.createCustomer(customer);
     return null;

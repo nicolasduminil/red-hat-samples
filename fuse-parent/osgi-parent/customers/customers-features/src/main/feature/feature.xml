@@ -27,12 +27,12 @@
     <feature dependency="true">aries-blueprint</feature>
     <feature>jpa</feature>
     <feature>hibernate</feature>
-    <!--bundle>wrap:mvn:fr.simplex-software.red-hat.fuse/customers-jaxb/${project.version}</bundle-->
     <bundle>mvn:fr.simplex-software.red-hat.fuse/customers-jaxb/${project.version}</bundle>
-    <bundle>mvn:fr.simplex-software.red-hat.fuse.osgi/customers-data/${project.version}</bundle>
+    <bundle>mvn:fr.simplex-software.red-hat.fuse/customers-data/${project.version}</bundle>
   </feature>
   <feature name="customers-service" version="${project.version}">
     <feature version="${project.version}">customers-data</feature>
+    <feature>scr</feature>
     <bundle>mvn:fr.simplex-software.red-hat.fuse.osgi/customers-service/${project.version}</bundle>
   </feature>
   <feature name="customers-command" version="${project.version}">

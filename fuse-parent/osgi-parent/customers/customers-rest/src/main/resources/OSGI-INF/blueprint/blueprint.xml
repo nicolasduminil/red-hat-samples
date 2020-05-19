@@ -15,11 +15,11 @@
   </cxf:bus>
   <jaxrs:server id="customersRest" address="/api">
     <jaxrs:serviceBeans>
-      <ref component-id="customerDataService"/>
+      <ref component-id="customerRestApi"/>
     </jaxrs:serviceBeans>
     <jaxrs:providers>
       <bean class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider"/>
     </jaxrs:providers>
   </jaxrs:server>
-  <bean id="customerDataService" class="fr.simplex_software.red_hat.fuse.osgi.standalone.customers.rest.CustomerAPI"/>
+  <bean id="customerRestApi" class="fr.simplex_software.red_hat.fuse.osgi.standalone.customers.rest.CustomerAPI"/>
 </blueprint>

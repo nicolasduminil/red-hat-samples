@@ -13,28 +13,26 @@
   <name>Red Hat samples :: The Fuse Customers Service module</name>
   <dependencies>
     <dependency>
-      <groupId>fr.simplex-software.red-hat.fuse.osgi</groupId>
+      <groupId>fr.simplex-software.red-hat.fuse</groupId>
       <artifactId>customers-data</artifactId>
-      <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.persistence</groupId>
       <artifactId>javax.persistence</artifactId>
       <version>2.1.0</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>javax.transaction</groupId>
       <artifactId>javax.transaction-api</artifactId>
       <version>1.2</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>javax.interceptor</groupId>
       <artifactId>javax.interceptor-api</artifactId>
       <version>1.2</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.karaf.shell</groupId>
-      <artifactId>org.apache.karaf.shell.core</artifactId>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.oracle.jdbc</groupId>
@@ -50,6 +48,9 @@
         <configuration>
           <instructions>
             <Meta-Persistence>META-INF/persistence.xml</Meta-Persistence>
+            <Export-Package>
+              fr.simplex_software.red_hat.fuse.osgi.standalone.customers.services
+            </Export-Package>
             <Import-Package>
               javax.persistence;version="[2,3)",
               *
