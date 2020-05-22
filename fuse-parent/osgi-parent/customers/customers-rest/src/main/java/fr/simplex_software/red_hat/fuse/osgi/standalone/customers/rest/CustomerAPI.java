@@ -3,7 +3,7 @@ package fr.simplex_software.red_hat.fuse.osgi.standalone.customers.rest;
 import fr.simplex_software.red_hat.fuse.standalone.customers.data.dtos.*;
 import fr.simplex_software.red_hat.fuse.standalone.customers.data.entities.*;
 import fr.simplex_software.red_hat.fuse.standalone.customers.data.services.*;
-import org.apache.karaf.shell.api.action.lifecycle.*;
+import org.osgi.service.component.annotations.*;
 
 
 import javax.ws.rs.*;

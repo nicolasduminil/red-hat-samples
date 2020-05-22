@@ -1,0 +1,39 @@
+version: '3.7'
+networks:
+  karaf-network:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.96.0/20
+services:
+  karaf:
+    image: nicolasduminil/karaf4.28-openjdk11.07-maven3.6.3
+    networks:
+      karaf-network:
+        ipv4_address: 192.168.96.2
+    hostname: karaf
+    container_name: karaf
+    ports:
+      - 1099:1099
+      - 8101:8101
+      - 44444:44444
+    tty: true
+    volumes:
+      - ../docker:/opt/karaf/scripts
+      - $HOME/.m2:/root/.m2
+  oracle:
+    image: oracleinanutshell/oracle-xe-11g:latest
+    networks:
+      karaf-network:
+        ipv4_address: 192.168.96.3
+    hostname: oracle
+    container_name: oracle
+    ports:
+      - 49161:1521
+      - 5500:5500
+    environment:
+      ORACLE_ALLOW_REMOTE: "true"
+      ORACLE_DISABLE_ASYNCH_IO: "true"
+    volumes:
+      - ../scripts:/docker-entrypoint-initdb.d

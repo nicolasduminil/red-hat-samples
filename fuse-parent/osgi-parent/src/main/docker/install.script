@@ -1,0 +1,8 @@
+bundle:install -s wrap:mvn:com.oracle.jdbc/ojdbc8/12.2.0.1
+feature:repo-add mvn:fr.simplex-software.red-hat.fuse.osgi/customers-features/0.0.1-SNAPSHOT/xml
+feature:install customers-datasource
+feature:install customers-service
+bundle:install -s mvn:org.ops4j.pax.jdbc/pax-jdbc-oracle/1.4.5
+feature:install customers-command
+feature:install customers-rest
+feature:install cxf

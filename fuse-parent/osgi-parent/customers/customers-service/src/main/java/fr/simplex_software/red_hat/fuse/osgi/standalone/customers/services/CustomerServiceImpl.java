@@ -9,6 +9,7 @@ import javax.transaction.*;
 import java.math.*;
 import java.util.*;
 
+@Component(service = CustomerServiceImpl.class, property = { "osgi.jaxrs.resource=true" })
 public class CustomerServiceImpl implements CustomerDataService
 {
   @PersistenceContext(unitName = "customers")
